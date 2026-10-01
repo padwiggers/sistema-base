@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08090d" />
+  <title>Curadoria • JWT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <section id="authView" class="auth-layout">
+      <div class="brand-panel">
+        <div class="brand-mark">C</div>
+        <span class="eyebrow">CURADORIA JWT</span>
+        <h1>Seu conteúdo.<br><span>Do seu jeito.</span></h1>
+        <p>Organize links, artigos e referências importantes em um só lugar, com acesso protegido por JWT.</p>
+        <div class="feature-list">
+          <div><span>01</span><p>Salve referências sem bagunça.</p></div>
+          <div><span>02</span><p>Consulte tudo pelo seu painel.</p></div>
+          <div><span>03</span><p>Autenticação simples e segura.</p></div>
+        </div>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="tab active" data-mode="login">Entrar</button>
+          <button class="tab" data-mode="register">Criar conta</button>
+        </div>
+
+        <div class="auth-heading">
+          <p class="mini-label" id="authLabel">BEM-VINDO DE VOLTA</p>
+          <h2 id="authTitle">Entrar na sua conta</h2>
+          <p id="authDescription">Acesse sua curadoria e continue de onde parou.</p>
+        </div>
+
+        <form id="authForm" autocomplete="on">
+          <div id="nameGroup" class="field hidden">
+            <label for="name">Nome</label>
+            <input id="name" type="text" placeholder="Seu nome" />
+          </div>
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" placeholder="voce@email.com" required />
+          </div>
+          <div class="field">
+            <label for="password">Senha</label>
+            <input id="password" type="password" placeholder="••••••••" minlength="6" required />
+          </div>
+          <button class="primary-btn" type="submit"><span id="authButtonText">Entrar</span><span>→</span></button>
+          <p id="authMessage" class="form-message"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="dashboardView" class="dashboard hidden">
+      <header class="topbar">
+        <div class="brand-inline"><div class="brand-mark small">C</div><div><strong>Curadoria</strong><span>JWT</span></div></div>
+        <div class="top-actions">
+          <div class="user-chip"><div class="avatar" id="avatar">P</div><div><strong id="userName">Usuário</strong><small id="userEmail">email</small></div></div>
+          <button id="logoutBtn" class="ghost-btn">Sair</button>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+        <section class="hero-row">
+          <div>
+            <p class="eyebrow">SEU PAINEL</p>
+            <h1>Olá, <span id="heroName">Pedro</span>.</h1>
+            <p class="muted">Tudo que você decidiu guardar, sem caça ao tesouro no navegador.</p>
+          </div>
+          <button id="newItemBtn" class="primary-btn compact">+ Novo item</button>
+        </section>
+
+        <section class="stats-grid">
+          <article class="stat-card"><span>ITENS SALVOS</span><strong id="itemCount">0</strong><small>na sua curadoria</small></article>
+          <article class="stat-card"><span>STATUS</span><strong class="online">● Online</strong><small>API conectada</small></article>
+          <article class="stat-card accent-card"><span>ACESSO</span><strong>JWT</strong><small>sessão autenticada</small></article>
+        </section>
+
+        <section class="content-grid">
+          <div class="items-panel panel">
+            <div class="panel-head">
+              <div><p class="mini-label">MINHA CURADORIA</p><h2>Itens salvos</h2></div>
+              <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Pesquisar..." /></div>
+            </div>
+            <div id="itemsList" class="items-list"></div>
+          </div>
+
+          <aside id="itemFormPanel" class="panel add-panel">
+            <div class="panel-head"><div><p class="mini-label">NOVA REFERÊNCIA</p><h2>Adicionar item</h2></div><button id="closeFormBtn" class="icon-btn">×</button></div>
+            <form id="itemForm">
+              <div class="field"><label for="itemTitle">Título</label><input id="itemTitle" required placeholder="Ex.: Artigo sobre Node.js" /></div>
+              <div class="field"><label for="itemUrl">URL</label><input id="itemUrl" type="url" placeholder="https://..." /></div>
+              <div class="field"><label for="itemTags">Tags</label><input id="itemTags" placeholder="node, backend, estudo" /></div>
+              <div class="field"><label for="itemNotes">Anotações</label><textarea id="itemNotes" rows="5" placeholder="Por que vale guardar isso?"></textarea></div>
+              <button class="primary-btn" type="submit">Salvar item <span>→</span></button>
+              <p id="itemMessage" class="form-message"></p>
+            </form>
+          </aside>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
